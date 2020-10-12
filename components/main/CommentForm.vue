@@ -25,7 +25,7 @@
         Отправить
       </el-button>
     </el-form-item>
-</el-form>
+  </el-form>
 </template>
 
 <script>
@@ -33,10 +33,10 @@
         name: "CommentForm",
         data() {
            return {
-                loading: false,
-                controls: {
-                  name: '',
-                  text: ''
+              loading: false,
+              controls: {
+                name: '',
+                text: ''
               },
                rules: {
                 name: [
