@@ -3,7 +3,7 @@
     <div class="comment-header">
       <span>Person name</span>
       <span>
-        <i class="el-icon-time"></i>
+        <i class="el-icon-time" />
         {{ new Date().toLocaleDateString() }}
       </span>
     </div>
@@ -16,10 +16,10 @@
 </template>
 
 <script>
-    export default {
-        name: "Comment",
-        // props: ['Comment']
-    }
+export default {
+  name: 'Comment'
+  // props: ['Comment']
+}
 </script>
 
 <style lang="scss" scoped>

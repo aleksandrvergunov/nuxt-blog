@@ -7,7 +7,7 @@
     <header slot="header" class="post-header">
       <h3>Post title</h3>
       <small>
-        <i class="el-icon-time"></i>
+        <i class="el-icon-time" />
         {{ new Date().toLocaleDateString() }}
       </small>
     </header>
@@ -15,12 +15,15 @@
       <img
         src="https://cdn21.img.ria.ru/images/155959/50/1559595090_0:0:3160:2048_600x0_80_0_0_3b7a6ec53871df2f4ff4a0017d397b12.jpg"
         alt="post image"
-        class="post-img" />
+        class="post-img"
+      >
     </div>
     <footer class="post-footer">
-      <el-button round @click="openPost">Открыть</el-button>
+      <el-button round @click="openPost">
+        Открыть
+      </el-button>
       <span>
-        <i class="el-icon-message"></i>
+        <i class="el-icon-message" />
         12
       </span>
     </footer>
@@ -28,15 +31,15 @@
 </template>
 
 <script>
-    export default {
-        name: "Post",
-        methods: {
-            openPost() {
-              const id = 'test-id'
-              this.$router.push(`/post/${id}`)
-            }
-        }
+export default {
+  name: 'Post',
+  methods: {
+    openPost () {
+      const id = 'test-id'
+      this.$router.push(`/post/${id}`)
     }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

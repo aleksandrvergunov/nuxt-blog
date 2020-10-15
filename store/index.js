@@ -1,12 +1,12 @@
-export const state  = () => ({
+export const state = () => ({
   error: null
 })
 
 export const mutations = {
-  setError(state, error) {
+  setError (state, error) {
     state.error = error
   },
-  clearError(state) {
+  clearError (state) {
     state.error = null
   }
 }

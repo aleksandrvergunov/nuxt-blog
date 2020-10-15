@@ -5,19 +5,19 @@
 </template>
 
 <script>
-    export default {
-        name: "empty",
-        computed: {
-            error() {
-                return this.$store.getters.error
-            }
-        },
-        watch: {
-            error(value) {
-                this.$message.error(value)
-            }
-        }
+export default {
+  name: 'Empty',
+  computed: {
+    error () {
+      return this.$store.getters.error
     }
+  },
+  watch: {
+    error (value) {
+      this.$message.error(value)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

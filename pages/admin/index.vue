@@ -1,13 +1,16 @@
 <template>
-    <h1>Welcome admin page</h1>
+  <h1>Welcome admin page</h1>
 </template>
 
 <script>
-    export default {
-        name: "index",
-        layout: 'admin',
-        middleware: ['admin-auth']
-    }
+export default {
+  name: 'Index',
+  head: {
+    title: 'Аналитика'
+  },
+  layout: 'admin',
+  middleware: ['admin-auth']
+}
 </script>
 
 <style lang="scss" scoped>

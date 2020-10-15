@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import AppPost  from '@/components/main/Post'
+import AppPost from '@/components/main/Post'
 export default {
-    head: {
-        title: 'Главная'
-    },
-    components: {
-        AppPost
-    }
+  components: {
+    AppPost
+  },
+  head: {
+    title: 'Главная'
+  }
 }
 </script>
 
