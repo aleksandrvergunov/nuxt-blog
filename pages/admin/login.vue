@@ -58,7 +58,11 @@ export default {
 
     if (message === 'login') {
       this.$message.info('Для начала войдите в систему')
-    } else if (message === 'logout') { this.$message.success('Вы вышли из панели администратора') }
+    } else if (message === 'logout') {
+      this.$message.success('Вы вышли из панели администратора')
+    } else if (message === 'session') {
+      this.$message.warning('Время сессии истекло, пожалуйста зайдите заного')
+    }
   },
   methods: {
     onSubmit () {

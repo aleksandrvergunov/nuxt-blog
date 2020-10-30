@@ -14,7 +14,7 @@
       @submit.native.prevent="onSubmit"
     >
       <el-form-item label="Текст в формате .md или .html" prop="text">
-        <el-input v-model.trim="controls.text" type="textarea" resize="none" :rows="10" />
+        <el-input v-model="controls.text" type="textarea" resize="none" :rows="10" />
       </el-form-item>
 
       <div class="mb">
@@ -65,6 +65,7 @@ export default {
     }
   },
   mounted () { // call only client side
+    this.controls.text = this.post.text
     const { message } = this.$route.query
 
     if (message === 'login') {
@@ -79,7 +80,7 @@ export default {
           try {
             const formData = {
               text: this.controls.text,
-              id: this.post.id
+              id: this.post._id
             }
             await this.$store.dispatch('post/update', formData)
             this.$message.success('Пост обновлён')

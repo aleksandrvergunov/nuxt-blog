@@ -5,15 +5,15 @@
     class="post"
   >
     <header slot="header" class="post-header">
-      <h3>Post title</h3>
+      <h3>{{ post.title }}</h3>
       <small>
         <i class="el-icon-time" />
-        {{ new Date().toLocaleDateString() }}
+        {{ new Date(post.date).toLocaleDateString() }}
       </small>
     </header>
     <div class="post-body">
       <img
-        src="https://cdn21.img.ria.ru/images/155959/50/1559595090_0:0:3160:2048_600x0_80_0_0_3b7a6ec53871df2f4ff4a0017d397b12.jpg"
+        :src="post.imageUrl"
         alt="post image"
         class="post-img"
       >
@@ -24,7 +24,7 @@
       </el-button>
       <span>
         <i class="el-icon-message" />
-        12
+        {{ post.comments.length }}
       </span>
     </footer>
   </el-card>
@@ -33,9 +33,15 @@
 <script>
 export default {
   name: 'Post',
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     openPost () {
-      const id = 'test-id'
+      const id = this.post._id
       this.$router.push(`/post/${id}`)
     }
   }

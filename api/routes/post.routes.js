@@ -5,7 +5,7 @@ const router = Router()
 const upload = require('../middleware/upload')
 const ctr = require('../controllers/post.controller')
 
-
+// /api/post/admin
 // Admin - must be protected by a passport
 router.post(
   '/admin/',
@@ -51,7 +51,7 @@ router.get(
 )
 
 router.put(
-  '/:id',
+  '/add/view/:id',
   ctr.addView
 )
 

@@ -3,7 +3,7 @@ const Post = require('../models/post.model')
 module.exports.create = async (req, res) => {
   const post = new Post({
     title: req.body.title,
-    test: req.body.text,
+    text: req.body.text,
     imageUrl: `/${req.file.filename}`
   })
 
@@ -41,9 +41,13 @@ module.exports.update = async (req, res) => {
   }
 
   try {
+    console.log(await Post.findOneAndUpdate({
+      _id: req.params.id
+    }, { $set }, { new: true }))
     const post = await Post.findOneAndUpdate({
       _id: req.params.id
     }, { $set }, { new: true })
+
     res.json(post)
   } catch (e) {
     res.status(500).json(e)
@@ -65,7 +69,7 @@ module.exports.addView = async (req, res) => {
   }
 
   try {
-    await Post.findOnAndUpdate({ _id: req.params.id }, { $set })
+    await Post.findOneAndUpdate({ _id: req.params.id }, { $set })
     res.status(204).json()
   } catch (e) {
     res.status(500).json(e)

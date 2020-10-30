@@ -22,9 +22,9 @@
       </template>
     </el-table-column>
     <el-table-column label="Комментраии">
-      <template slot-scope="{row: {comments}}">
+      <template slot-scope="{row: {commenst}}">
         <i class="el-icon-s-comment" />
-        <span style="margin-left: 10px">{{ comments.length }}</span>
+        <span style="margin-left: 10px">{{ commenst.length }}</span>
       </template>
     </el-table-column>
 

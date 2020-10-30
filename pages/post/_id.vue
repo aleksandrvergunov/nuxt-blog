@@ -2,7 +2,7 @@
   <article class="post">
     <header class="post-header">
       <div class="post-title">
-        <h1>Post title</h1>
+        <h1>{{ post.title }}</h1>
         <nuxt-link to="/">
           <i class="el-icon-back" />
         </nuxt-link>
@@ -10,16 +10,16 @@
       <div class="post-info">
         <small>
           <i class="el-icon-time" />
-          {{ new Date().toLocaleDateString() }}
+          {{ new Date(post.date).toLocaleDateString() }}
         </small>
         <small>
           <i class="el-icon-view" />
-          12
+          {{ post.views }}
         </small>
       </div>
       <div class="post-image">
         <img
-          src="https://cdn21.img.ria.ru/images/155959/50/1559595090_0:0:3160:2048_600x0_80_0_0_3b7a6ec53871df2f4ff4a0017d397b12.jpg"
+          :src="post.imageUrl"
           alt="post image"
           class="post-img"
         >
@@ -27,38 +27,17 @@
     </header>
 
     <main class="post-content">
-      Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      <p>
-        Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      </p>
-      <p>
-        Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-        Tremble, scotty, crazy moon! Nunquam captis imber. Everything we do is connected with purpose: silence, mind, intuition, mineral.
-      </p>
+      <vue-markdown>{{ post.text }}</vue-markdown>
     </main>
     <footer>
-      <div v-if="true" class="comments">
+      <div v-if="post.comments.length" class="comments">
         <h1>Добавить комментарий</h1>
         <app-comment-from
           v-if="canAddComment"
           @created="createCommentHandler"
         />
         <app-comment
-          v-for="comment in 4"
+          v-for="comment in post.comments.length"
           :key="comment"
           :content="comment"
         />
@@ -81,6 +60,11 @@ export default {
   components: {
     AppComment,
     AppCommentFrom
+  },
+  async asyncData ({ store, params }) {
+    const post = await store.dispatch('post/fetchById', params.id)
+    await store.dispatch('post/addView', post)
+    return { post }
   },
   data () {
     return {

@@ -41,7 +41,8 @@ module.exports = {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    '@/plugins/globals'
+    '@/plugins/globals',
+    '@/plugins/axios'
   ],
 
   /*
