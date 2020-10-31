@@ -22,9 +22,9 @@
       </template>
     </el-table-column>
     <el-table-column label="Комментраии">
-      <template slot-scope="{row: {commenst}}">
+      <template slot-scope="{row: { comments }}">
         <i class="el-icon-s-comment" />
-        <span style="margin-left: 10px">{{ commenst.length }}</span>
+        <span style="margin-left: 10px">{{ comments.length }}</span>
       </template>
     </el-table-column>
 
@@ -56,7 +56,6 @@
 
 <script>
 export default {
-  name: 'List',
   layout: 'admin',
   middleware: ['admin-auth'],
   async asyncData ({ store }) {

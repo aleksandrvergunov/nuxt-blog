@@ -25,21 +25,20 @@
         >
       </div>
     </header>
-
     <main class="post-content">
       <vue-markdown>{{ post.text }}</vue-markdown>
     </main>
     <footer>
+      <app-comment-from
+        v-if="canAddComment"
+        :post-id="post._id"
+        @created="createCommentHandler"
+      />
       <div v-if="post.comments.length" class="comments">
-        <h1>Добавить комментарий</h1>
-        <app-comment-from
-          v-if="canAddComment"
-          @created="createCommentHandler"
-        />
         <app-comment
-          v-for="comment in post.comments.length"
-          :key="comment"
-          :content="comment"
+          v-for="comment in post.comments"
+          :key="comment._id"
+          :comment="comment"
         />
       </div>
       <div v-else class="text-center">
@@ -50,10 +49,11 @@
 </template>
 
 <script>
+// TODO: РАЗОБРАТЬСЯ С ПЕРЕЗАГРУЗКОЙ СТР. Когда происходит переза-ка на мониторе только json.
 import AppComment from '@/components/main/Comment'
 import AppCommentFrom from '@/components/main/CommentForm'
+
 export default {
-  name: 'Id',
   validate ({ params }) {
     return Boolean(params.id)
   },
@@ -72,8 +72,14 @@ export default {
     }
   },
   methods: {
-    createCommentHandler () {
+    createCommentHandler (comment) {
+      this.post.comments.unshift(comment)
       this.canAddComment = false
+    }
+  },
+  head () {
+    return {
+      title: this.post.title
     }
   }
 }

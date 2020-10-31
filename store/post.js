@@ -2,21 +2,6 @@ export const state = () => ({
 
 })
 
-const posts = [{
-  title: 'Post 1',
-  date: new Date().toLocaleDateString(),
-  views: 22,
-  comments: [1, 2],
-  _id: 'id1'
-},
-{
-  title: 'Post 2',
-  date: new Date().toLocaleDateString(),
-  views: 22,
-  comments: [1, 2],
-  _id: 'id2'
-}]
-
 export const actions = {
   async fetchAdmin ({ commit }) {
     try {
@@ -68,7 +53,6 @@ export const actions = {
   },
   async addView ({ commit }, { _id, views }) {
     try {
-      console.log(views)
       return await this.$axios.$put(`/api/post/add/view/${_id}`, { views })
     } catch (e) {
       commit('setError', e, { root: true })

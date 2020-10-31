@@ -26,7 +26,6 @@ module.exports.getAll = async (req, res) => {
 
 module.exports.getById = async (req, res) => {
   try {
-    // eslint-disable-next-line handle-callback-err
     await Post.findById(req.params.id).populate('comments').exec((error, post) => {
       res.json(post)
     })
@@ -41,9 +40,6 @@ module.exports.update = async (req, res) => {
   }
 
   try {
-    console.log(await Post.findOneAndUpdate({
-      _id: req.params.id
-    }, { $set }, { new: true }))
     const post = await Post.findOneAndUpdate({
       _id: req.params.id
     }, { $set }, { new: true })
@@ -67,7 +63,6 @@ module.exports.addView = async (req, res) => {
   const $set = {
     views: ++req.body.views
   }
-
   try {
     await Post.findOneAndUpdate({ _id: req.params.id }, { $set })
     res.status(204).json()

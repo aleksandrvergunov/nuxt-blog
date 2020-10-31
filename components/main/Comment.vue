@@ -1,24 +1,26 @@
 <template>
   <el-card class="comment">
     <div class="comment-header">
-      <span>Person name</span>
+      <span>{{ comment.name }}</span>
       <span>
         <i class="el-icon-time" />
-        {{ new Date().toLocaleDateString() }}
+        {{ new Date(comment.date).toLocaleDateString() }}
       </span>
     </div>
     <div class="comment-text">
-      lorem10Collision course, alignment, and advice.
-      lorem10Collision course, alignment, and advice.
-      lorem10Collision course, alignment, and advice.
+      {{ comment.text }}
     </div>
   </el-card>
 </template>
 
 <script>
 export default {
-  name: 'Comment'
-  // props: ['Comment']
+  props: {
+    comment: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
 
