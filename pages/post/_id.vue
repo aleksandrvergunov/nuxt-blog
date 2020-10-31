@@ -49,7 +49,6 @@
 </template>
 
 <script>
-// TODO: РАЗОБРАТЬСЯ С ПЕРЕЗАГРУЗКОЙ СТР. Когда происходит переза-ка на мониторе только json.
 import AppComment from '@/components/main/Comment'
 import AppCommentFrom from '@/components/main/CommentForm'
 

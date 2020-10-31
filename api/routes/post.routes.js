@@ -38,6 +38,12 @@ router.delete(
   ctr.remove
 )
 
+router.get(
+  '/admin/get/analytics',
+  passport.authenticate('jwt', { session: false }),
+  ctr.getAnalytics
+)
+
 // Base
 
 router.get(
@@ -46,7 +52,7 @@ router.get(
 )
 
 router.get(
-  '/:id',
+  '/get/:id',
   ctr.getById
 )
 

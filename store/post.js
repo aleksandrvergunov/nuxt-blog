@@ -29,7 +29,7 @@ export const actions = {
   },
   async fetchById ({ commit }, id) {
     try {
-      return await this.$axios.$get(`/api/post/${id}`)
+      return await this.$axios.$get(`/api/post/get/${id}`)
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
@@ -54,6 +54,14 @@ export const actions = {
   async addView ({ commit }, { _id, views }) {
     try {
       return await this.$axios.$put(`/api/post/add/view/${_id}`, { views })
+    } catch (e) {
+      commit('setError', e, { root: true })
+      throw e
+    }
+  },
+  async getAnalytics ({ commit }) {
+    try {
+      return await this.$axios.$get('/api/post/admin/get/analytics')
     } catch (e) {
       commit('setError', e, { root: true })
       throw e
