@@ -26,7 +26,7 @@ export default {
     return { views, comments }
   },
   head: {
-    title: 'Аналитика'
+    title: `Аналитика | ${process.env.appName}`
   },
   layout: 'admin',
   middleware: ['admin-auth']

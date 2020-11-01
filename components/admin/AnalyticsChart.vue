@@ -22,7 +22,10 @@ export default {
         return []
       }
     },
-    title: String
+    title: {
+      type: String,
+      required: true
+    }
   },
   mounted () {
     const data = {

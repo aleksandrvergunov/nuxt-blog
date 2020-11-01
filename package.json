@@ -10,10 +10,15 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "yarn lint:js",
-    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/pwa": "^3.2.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.4",

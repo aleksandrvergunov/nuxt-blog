@@ -20,7 +20,7 @@
       <div class="mb">
         <small>
           <i class="el-icon-time" />
-          <span>{{ post.date }}</span>
+          <span> {{ post.date | date }}</span>
         </small>
         <small>
           <i class="el-icon-view" />
@@ -93,7 +93,7 @@ export default {
   },
   head () {
     return {
-      title: `Пост ${this.post.title}`
+      title: `Пост ${this.post.title} | ${process.env.appName}`
     }
   },
   validate ({ params }) {

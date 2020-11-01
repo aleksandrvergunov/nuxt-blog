@@ -4,7 +4,7 @@
       <span>{{ comment.name }}</span>
       <span>
         <i class="el-icon-time" />
-        {{ new Date(comment.date).toLocaleDateString() }}
+        {{ comment.date | date }}
       </span>
     </div>
     <div class="comment-text">

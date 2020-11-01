@@ -16,7 +16,8 @@ export default function ({ $axios, redirect, store }) {
       }
 
       if (error.response.status === 500) {
-        console.error('Server 500 error')
+        /* eslint no-console: ["error", { allow: ["error"] }] */
+        console.error('Server 500 error.')
       }
     }
   })

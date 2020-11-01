@@ -4,7 +4,7 @@ module.exports = {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'universal',
+  // mode: 'universal',
 
   /*
   ** Nuxt target
@@ -56,8 +56,16 @@ module.exports = {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/pwa'
   ],
+
+  workbox: {
+
+  },
+  meta: {
+
+  },
 
   /*
   ** Nuxt.js modules
@@ -66,6 +74,14 @@ module.exports = {
     // Doc: https://http.nuxtjs.org
     '@nuxtjs/axios'
   ],
+
+  axios: {
+    baseURL: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
+  env: {
+    appName: 'SSR blog'
+  },
 
   /*
   ** Server Middleware

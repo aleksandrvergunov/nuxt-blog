@@ -110,6 +110,9 @@ export default {
     handleImageChange (file, fileList) {
       this.image = file.raw
     }
+  },
+  head: {
+    title: `Новый пост | ${process.env.appName}`
   }
 }
 </script>

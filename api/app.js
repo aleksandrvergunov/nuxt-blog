@@ -11,7 +11,12 @@ const commentRoutes = require('./routes/comment.routes')
 const keys = require('./keys')
 const app = express()
 
-mongoose.connect(keys.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.set('useCreateIndex', true)
+mongoose.connect(keys.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+})
   .then(() => console.log('MongoDB connected'))
   .catch(error => console.log(error))
 
